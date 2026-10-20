@@ -1,0 +1,52 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model EcommerceMVCAdo.Models.CategoryFormModel 
+<form action="/category/SaveCategory" method="post">
+    <input asp-for="CatModel.CategoryId" type="hidden" />
+
+    <input asp-for="CatModel.Name" />
+
+    <span asp-validation-for="CatModel.Name"></span>
+
+    <div asp-validation-summary="All"></div>
+    @if (Model.CatModel.CategoryId == 0)
+    {
+        <input type="submit" value="Save" />
+    }
+    else
+    {
+        <input type="submit" value="Update" />
+    }
+    </form>
+<table>
+    <thead>
+        <tr>
+            <th>sr.no</th>
+            <th>cat name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{int count = 1;}
+        @if (Model.Categories != null)
+        {
+            @foreach (var cat in Model.Categories)
+            {
+                <tr>
+                    <td>@count</td>
+                    <td>@cat.Name</td>
+                    <td><a href="/Category/CreateCategory?CategoryId=@cat.CategoryId">Edit</a>  <a href="/Category/DeleteCategory?CategoryId=@cat.CategoryId">Delete</a></td>
+                </tr>
+                count++;
+            }
+        }
+
+    </tbody>
+</table>
+@if (TempData["Message"] != null)
+{
+    @TempData["Message"]
+}

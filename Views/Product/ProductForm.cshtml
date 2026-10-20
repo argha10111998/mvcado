@@ -1,0 +1,37 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model EcommerceMVCAdo.Models.ProductFormModel
+<form action="/Product/SaveProduct" method="Post">
+    <input hidden asp-for="ProductModel.ProductId"/>
+     <input  asp-for="ProductModel.ProductName" placeholder="Product Name"/>
+     <span asp-validation-for="ProductModel.ProductName"></span>
+     <input  asp-for="ProductModel.ProductPrice" placeholder="Product Price"/>
+      <span asp-validation-for="ProductModel.ProductPrice"></span>
+    <input asp-for="ProductModel.Stock" placeholder="Product Stock" />
+    <span asp-validation-for="ProductModel.Stock"></span>
+    <select asp-for="ProductModel.CategoryId" placeholder="Product Category">
+        <option value="">Select Category</option>
+        @if(Model.Categories!=null){
+        @foreach (var cat in Model.Categories)
+        {
+            <option value="@cat.CategoryId">@cat.Name</option>
+        }
+        }
+     </select>
+        @if(Model.ProductModel.ProductId>0)
+        {
+            <input type="submit" value="Update" />
+        }
+        else
+        {
+            <input type="submit" value="Save" />
+        }
+        
+</form>
+@if (TempData["Message"] != null)
+{
+    @TempData["Message"]
+}

@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<form>
+    <input type="email" id="usremail" placeholder="Email"/>
+    <input type="password" id="usrpass" placeholder="Password"/>
+    <input type="button" id="login" value="login"/>
+</form>
+@section Scripts{
+    <script>
+        $(document).ready(function(){
+            $("#login").click(function(){
+                var email=$("#usremail").val();
+                var pass=$("#usrpass").val();
+                $.ajax({
+                    url:"https://localhost:7136/api/UserApi/login",
+                    contentType:"application/JSON",
+                    data:JSON.stringify({"Email":email , "Password":pass}),
+                    method:"post",
+                    success:function(res,textstatus,jxqr){
+                        console.log(res);
+                        console.log(jxqr);
+                    },
+                    error:function(jxqr){
+                        console.log(jxqr);
+                        alert("Wrong Email Or Password");
+                    }
+                })
+            })
+        })
+    </script>
+}

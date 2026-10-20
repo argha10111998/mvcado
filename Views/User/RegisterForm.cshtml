@@ -1,0 +1,57 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model EcommerceMVCAdo.Models.UserModel
+<form>
+    <input type="text" placeholder="Name" id="usrname" name="username" />
+    <input type="email" placeholder="Email" id="usremail" name="useremail" />
+    <input type="password" placeholder="password" id="usrpass" name="userpassword" />
+    <input type="button" id="register" value="Register" />
+    <div id="success-message" hidden>
+        <span>Registration successful</span>
+        <a href="/User/Login">Login</a>
+    </div>
+    <div id="failed-message" hidden>
+        <span>Something Went Wrong!</span>
+        <span id="failed-message"></span>
+    </div>
+    
+</form>
+@section Scripts{
+    <script>
+        
+        $(document).ready(function(){
+            $("#register").click(function(){
+                var name = $("#usrname").val();
+                var email = $("#usremail").val();
+                var password = $("#usrpass").val();
+                if(name && email && password){
+                    $.ajax({
+                        url:"https://localhost:7136/api/UserApi/Register",
+                        method:"post",
+                        contentType:"application/JSON",
+                        data:JSON.stringify({"Name":name , "Email":email , "Password":password}),
+                        success:function(res, textStatus, jqXHR){
+                            console.log(jqXHR);
+                            if(jqXHR.status==200){
+                                $("#success-message").removeAttr("hidden");
+                            }
+                            if(jqXHR.status==409){
+                                $("#success-message").attr("hidden",true);
+                                $("#failed-message").html(res.message);
+                            }
+                        },
+                        error:function(jqXHR){
+                            console.log(jqXHR.responseJSON.message);
+                            $("#success-message").attr("hidden",true);
+                            $("#failed-message").removeAttr("hidden");
+                            $("#failed-message").html(jqXHR.responseJSON.message);
+                        }
+                    })
+                }
+            })
+        })
+    </script>
+}

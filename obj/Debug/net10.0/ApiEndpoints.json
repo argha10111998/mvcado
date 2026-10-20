@@ -1,0 +1,34 @@
+[
+  {
+    "ContainingType": "EcommerceMVCAdo.Controllers.UserApiController",
+    "Method": "Login",
+    "RelativePath": "api/UserApi/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "EcommerceMVCAdo.Models.UserLoginModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EcommerceMVCAdo.Controllers.UserApiController",
+    "Method": "Register",
+    "RelativePath": "api/UserApi/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "EcommerceMVCAdo.Models.UserRegisterModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
