@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EcommerceMVCAdo.Controllers
 {
@@ -8,5 +9,11 @@ namespace EcommerceMVCAdo.Controllers
         {
             return View();
         }
+        [Authorize]
+        public IActionResult ShopList()
+        {
+            return View("~/Views/Shop/ShopList.cshtml");
+        }
     }
+
 }

@@ -131,3 +131,4 @@ D:\Dot-Net-Prac\EcommerceMVCAdo\bin\Debug\net10.0\runtimes\win-x64\native\Micros
 D:\Dot-Net-Prac\EcommerceMVCAdo\bin\Debug\net10.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 D:\Dot-Net-Prac\EcommerceMVCAdo\obj\Debug\net10.0\EcommerceMVCAdo.csproj.AssemblyReference.cache
 D:\Dot-Net-Prac\EcommerceMVCAdo\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Dot-Net-Prac\EcommerceMVCAdo\obj\Debug\net10.0\EcommerceMVCAdo.sourcelink.json

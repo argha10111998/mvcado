@@ -33,8 +33,21 @@ builder.Services.AddAuthentication(options =>
         {
             context.Token = context.Request.Cookies["loginToken"];
             return Task.CompletedTask;
+        },
+        OnChallenge = context =>
+        {
+            // Redirect only MVC page requests, not API requests.
+            if (!context.Request.Path.StartsWithSegments("/api"))
+            {
+                context.HandleResponse();
+
+                context.Response.Redirect("/user/Login");
+            }
+
+            return Task.CompletedTask;
         }
     };
+    
 });
 var app = builder.Build();
 
